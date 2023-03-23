@@ -33,14 +33,14 @@ export default function Home() {
         <h1>Home Page</h1>
         <ul className="nav">
             {
-                businessCategory.map((cv,idx,arr)=>{
-                    return  <li key={idx} className="me-3">
-                                <Link to="/search">
+             businessCategory.map((cv,idx,arr)=>{
+                 return  <li key={idx} className="mean-1">
+                               <Link to="/search">
                                     <img src={'http://localhost:1337'+cv.attributes.image.data.attributes.url} /><br />
                                     {cv.attributes.name}
-                                </Link>
+                                   </Link>
                             </li>
-                })
+                })             
             }
            
             

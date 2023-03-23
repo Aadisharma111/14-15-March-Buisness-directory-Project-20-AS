@@ -76,7 +76,7 @@ export default function BusinessRegister() {
     //2.2 function defination area
     let busReg=(e)=>{
         e.preventDefault();
-        //alert('HI');
+        //alert('Hello');
         let payload ={
                         "data": {
                         "name": document.querySelector('input[name="business_name"]').value,
@@ -148,7 +148,7 @@ export default function BusinessRegister() {
     
 
 
-    //2.3 To return somethign
+    //2.3 To return something
     return (
         <>
             <h1 className="text-center">Business Register</h1>
