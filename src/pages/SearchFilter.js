@@ -9,21 +9,21 @@ export default function SearchFilter() {
             <Row>
                 <Col sm={9}>
                     <h1>Search Filter</h1>
-                    <Card className="p-3">
+                    <Card className="p-5">
                         <Row>
-                            <Col sm={3}>
-                                <Card.Img className="img-fluid" variant="top" src="" />
+                            <Col sm={4}>
+                                <Card.Img className="img-fluid" variant="top" src="https://images.jdmagicbox.com/comp/jaipur/n7/0141px141.x141.220704203116.r6n7/catalogue/club-alpha-c-scheme-jaipur-restaurants-v5sl62b4ht.jpg?temp=1" />
                             </Col>
-                            <Col sm={9}>
+                            <Col sm={8}>
                                 <Card.Body>
                                     <Card.Title>Hotel Highway king</Card.Title>
-                                    <Badge className="p-1 fs-3"  bg="YEAH">3.9</Badge> 
+                                    <Badge className="p-2 fs-5"  bg="YEAH">2.2</Badge> 
                                     <span>
-                                            <FontAwesomeIcon icon={faStar} className="text-warning" />
-                                            <FontAwesomeIcon icon={faStar} className="text-warning" />
-                                            <FontAwesomeIcon icon={faStar} className="text-warning" />
-                                            <FontAwesomeIcon icon={faStar} className="text-secondary" />
-                                            <FontAwesomeIcon icon={faStar} className="text-secondary" />
+                                      <FontAwesomeIcon icon={faStar} className="text-warning" />
+                                      <FontAwesomeIcon icon={faStar} className="text-warning" />
+                                      <FontAwesomeIcon icon={faStar} className="text-warning" />
+                                      <FontAwesomeIcon icon={faStar} className="text-secondary" />
+                                      <FontAwesomeIcon icon={faStar} className="text-secondary" />
                                     </span>
                                     <span>1,551 Rating</span>
                                     <Card.Text>
@@ -35,13 +35,14 @@ export default function SearchFilter() {
                         </Row>                
                     </Card>  
                 </Col>
-                <Col sm={3}>
+                <Col sm={5}>
                     <Card style={{ width: '19rem' }}>
                         <Card.Header>Featured</Card.Header>
                         <ListGroup variant="flush">
-                            <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                            <ListGroup.Item>*Cuisines* 
+                                Desserts, Chinese, Mughlai, North Indian, Italian, Continental, Thai, Fast Food</ListGroup.Item>
+                            <ListGroup.Item>Mode of Payment Cash, BHIM, Credit Card, Debit Cards, Paytm, PhonePe, UPI, Visa Card, Cheque</ListGroup.Item>
+                            <ListGroup.Item>@just Enjoy our Meal</ListGroup.Item>
                         </ListGroup>
                     </Card>
                 </Col>

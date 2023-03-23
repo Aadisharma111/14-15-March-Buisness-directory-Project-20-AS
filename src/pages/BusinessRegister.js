@@ -60,12 +60,12 @@ export default function BusinessRegister() {
 
 
         //Call the Business Category Api
-        fetch(`${URL}/api/business-categories`,{})
+        fetch(`${URL}/api/buisness-categories`,{})
         .then((res)=>{
             return res.json()
         })
         .then((businessCatData)=>{
-            console.log('Business-categories ------->>',businessCatData.data);
+            console.log('Buisness-categories ------->>',businessCatData.data);
             setBusinessCategories(businessCatData.data);
         })
         .catch((err)=>{
@@ -79,8 +79,8 @@ export default function BusinessRegister() {
         //alert('Hello');
         let payload ={
                         "data": {
-                        "name": document.querySelector('input[name="business_name"]').value,
-                        "business_category": document.querySelector('select[name="bus_cat_id"]').value,
+                        "name": document.querySelector('input[name="buisness_name"]').value,
+                        "buisness_category": document.querySelector('select[name="bus_cat_id"]').value,
                         "cities": [
                                 document.querySelector('select[name="city_id"]').value
                             ]
@@ -89,7 +89,7 @@ export default function BusinessRegister() {
         //Get the Token from localstorage
         let token = window.localStorage.getItem('jwt_token')            
         //Call the API
-        fetch(`${URL}/api/businesses`,{ //String interpolation
+        fetch(`${URL}/api/buisnesses`,{ //String interpolation
             method:"POST",
             headers:{
                 //P:V
@@ -109,7 +109,7 @@ export default function BusinessRegister() {
 
             }else{
 
-                alert("Business Registered Succesffully");
+                alert("Business Registered Succesfully");
             }
         })
         .catch()           
