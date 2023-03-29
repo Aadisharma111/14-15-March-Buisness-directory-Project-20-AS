@@ -3,6 +3,7 @@ import { Container, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Footer from '../component/ui/Footer'
 import Header from '../component/ui/Header'
+import { URL } from '../helpers/helper';
 
 export default function Home() {
     //2.1 Hooks Area
@@ -35,11 +36,12 @@ export default function Home() {
             {
                  businessCategory.map((cv,idx,arr)=>{
                     return  <li key={idx} className="mean-2">
-                                <Link to="/search">
-                                    <img src={cv.attributes.image.data.attributes.url} alt=""/><br />
-                                    {cv.attributes.name}
+                                 <Link to={"/search?cat_name="+cv.attributes.name}>
+                                    <img src={URL+cv.attributes.image.data.attributes.url} /><br />
+                                    {cv.attributes.name} 
                                 </Link>
                             </li>
+                            
                 })             
             }
            

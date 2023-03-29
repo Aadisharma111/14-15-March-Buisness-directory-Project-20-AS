@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import Geocode from "react-geocode";
 
+import {Client} from "@googlemaps/google-maps-services-js";
+
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { GOOGLE_MAP_KEY, URL } from '../../helpers/helper';
+
+const client = new Client({});
 
 export default function Navigation() {
     //2.1 Hooks Area
     const [logo,setLogo] = useState('');
     const [address,setAddress] = useState('');
-    let x=document.getElementById("demo");;
     useEffect(()=>{
+        
        // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
         Geocode.setApiKey(GOOGLE_MAP_KEY);
 
@@ -35,7 +39,7 @@ export default function Navigation() {
         //var latlng = new window.google.maps.LatLng(24.45558, 74.8857875);
         //console.log('latlng------>',latlng);
 
-        fetch(`${URL}/api/website?populate=*`)
+        fetch(`${URL}/api/website-logo?populate=*`)
         .then(res=>res.json())
         .then(data=>{
             console.log('Logo ------->',data.data.attributes.logo.data.attributes.url);
@@ -52,12 +56,12 @@ export default function Navigation() {
    
 
     let detectLocation = ()=>{ //Fat Arrow function
-        //alert('JIJIJIJIJ');
+        //alert('oopsss');
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
             
         } else {
-            x.value = "Geolocation is not supported by this browser.";
+            //x.value = "Geolocation is not supported by this browser.";
           }
     }
     let showPosition=(position)=>{
@@ -66,20 +70,40 @@ export default function Navigation() {
         window.localStorage.setItem('lat',position.coords.latitude);
         window.localStorage.setItem('long',position.coords.longitude);
 
-         // Get address from latitude & longitude.
-        Geocode.fromLatLng(position.coords.latitude, position.coords.longitude ).then(
+        client
+            .elevation({
+                params: {
+                locations: [{ lat: position.coords.latitude, lng: position.coords.longitude }],
+                    key: GOOGLE_MAP_KEY,
+                },
+                timeout: 1000, // milliseconds
+            })
+            .then((r) => {
+                console.log(r.data.results[0].elevation);
+            })
+            .catch((e) => {
+                console.log(e.response.data.error_message);
+            });
+            // Get address from latitude & longitude.
+            /*    Geocode.fromLatLng(position.coords.latitude, position.coords.longitude ).then(
             (response) => {
+                return response.json();
                 //const address = response.results[0].formatted_address;
-                setAddress(response.results[0].formatted_address)
-                window.localStorage.setItem('address',response.results[0].formatted_address);
-                console.log(address);
+                console.log('response------->',response);
+                if(response.results.lenght > 0){
+
+                    setAddress('A')//response.results[0].formatted_address
+                    window.localStorage.setItem('address',response.results[0].formatted_address);
+                }else{
+                    setAddress('B');//response.plus_code.compound_code
+                    window.localStorage.setItem('address',response.plus_code.compound_code);
+                }
+                //console.log(address);
             },
             (error) => {
-            console.error(error);
+                console.error('error ------>',error);
             }
-        );
-        window.localStorage.setItem('addres', 'RAJEEV NAGAR NEEMUCH');
-        x.value = 'RAJEEV NAGAR NEEMUCH'; 
+        ); */
         //x.innerHTML = "Latitude: " + position.coords.latitude +
        //"<br>Longitude: " + position.coords.longitude;
     }
@@ -94,7 +118,7 @@ export default function Navigation() {
                             width="100"
                             height="100"
                             className="d-inline-block align-top"
-                            alt="React Bootstrap logo"
+                            alt="logo.svg"
                         />
                     </Link>
                     <Navbar.Toggle aria-controls="navbarScroll" />
@@ -132,6 +156,7 @@ export default function Navigation() {
                                 placeholder="Search"
                                 className="me-2"
                                 aria-label="Search"
+                                value={address}
                                 id="demo"
                             />
                             <Form.Control

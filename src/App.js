@@ -12,6 +12,7 @@ import SearchFilter from './pages/SearchFilter'
 
 
 
+
 //2. Defination Area
 export default function App() {
     //2.1 Hooks Area

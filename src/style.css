@@ -7,10 +7,17 @@ header{
     border:1px dashed blue;
 }
 main{
-    height: 1000px;
+    height: auto;
     border:1px dashed green;
 }
 footer{
     height: 200px;
     border:1px dashed orange;
+}
+.mean-2{
+    margin-right: 20px;
+    border-right: 10px;
+    font-style: serif;
+    forced-color-adjust: black;
+    text-underline-position: auto;
 }
