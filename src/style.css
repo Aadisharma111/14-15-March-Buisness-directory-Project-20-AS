@@ -7,7 +7,7 @@ header{
     border:1px dashed blue;
 }
 main{
-    height: auto;
+    min-height: 1000px;
     border:1px dashed green;
 }
 footer{
@@ -15,9 +15,11 @@ footer{
     border:1px dashed orange;
 }
 .mean-2{
-    margin-right: 20px;
+    margin-right: 200px;
     border-right: 10px;
     font-style: serif;
-    forced-color-adjust: black;
-    text-underline-position: auto;
 }
+div.card:hover{
+    cursor: pointer;
+}
+
